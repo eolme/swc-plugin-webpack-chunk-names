@@ -1,0 +1,29 @@
+{
+    "name": "swc-plugin-webpack-chunk-names",
+    "version": "0.1.0",
+    "description": "",
+    "author": {
+        "name": "Anton Petrov",
+        "email": "im@petrov.engineer",
+        "url": "https://petrov.engineer"
+    },
+    "homepage": "https://github.com/eolme/swc-plugin-webpack-chunk-names",
+    "bugs": "https://github.com/eolme/swc-plugin-webpack-chunk-names/issues",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/eolme/swc-plugin-webpack-chunk-names.git"
+    },
+    "sideEffects": false,
+    "license": "MIT",
+    "keywords": [
+        "swc",
+        "swc-plugin",
+        "webpack",
+        "webpack-chunk-names"
+    ],
+    "main": "./lib/swc_plugin_webpack_chunk_names.wasm",
+    "files": [
+        "./lib"
+    ],
+    "preferUnplugged": true
+}

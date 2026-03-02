@@ -1,0 +1,11 @@
+edition = "2021"
+style_edition = "2021"
+use_small_heuristics = "Max"
+use_field_init_shorthand = true
+reorder_modules = true
+group_imports = "StdExternalCrate"
+imports_granularity = "Module"
+imports_layout = "Horizontal"
+use_try_shorthand = true
+trailing_comma = "Vertical"
+match_block_trailing_comma = true
