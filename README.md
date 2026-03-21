@@ -1,6 +1,8 @@
 # swc-plugin-webpack-chunk-names
 
-An SWC plugin that automatically injects `/* webpackChunkName */` and `/* webpackMode: "lazy-once" */` comments into dynamic `import()` calls, generating deterministic chunk names from import paths.
+An SWC plugin that automatically injects `/* webpackMode: "lazy-once" */` and `/* webpackChunkName: "…" */` into dynamic `import()` calls, generating deterministic chunk names from import paths.
+
+Comments are emitted as **leading trivia on the specifier** (the string or template literal), i.e. inside the `import(…)` parentheses and immediately before the module path—not before the `import` keyword. Existing `webpackChunkName` / `webpackMode` block comments at that position are replaced; other leading block comments are kept.
 
 **Before:**
 
@@ -12,9 +14,13 @@ const Button = lazy(() => import("./components/Button"));
 
 ```js
 const Button = lazy(() =>
-  import(/* webpackChunkName: "mfWidgets.Button" */ /* webpackMode: "lazy-once" */ "./components/Button")
+  import(
+    /* webpackMode: "lazy-once" */ /* webpackChunkName: "mfWidgets.Button" */ "./components/Button"
+  )
 );
 ```
+
+Exact spacing after emit may depend on your printer/SWC pipeline; both magic comments are always attached to the specifier.
 
 ## Installation
 
@@ -163,6 +169,11 @@ project / mf-widgets / src / components / Button
 ```
 
 Result: `mfWidgets.Button`
+
+## Development
+
+- **Tests:** `cargo test` — unit tests and `test_inline!` integration-style cases live in [`src/tests.rs`](src/tests.rs).
+- **Wasm artifact for npm:** run [`build.sh`](./build.sh) (release build for `wasm32-wasip1`, then `wasm-opt` into `lib/swc_plugin_webpack_chunk_names.wasm`). Requires a nightly-capable Rust toolchain and the WASI target as set up in your environment.
 
 ## License
 
