@@ -4,7 +4,7 @@ mkdir -p lib
 
 export CARGO_UPDATE_LOCK=false
 export RUST_LOG=off
-export RUSTFLAGS="-Zunstable-options -Zlocation-detail=none -Cpanic=immediate-abort --cfg=swc_ast_unknown -Clink-arg=--gc-sections -Clink-arg=--strip-all -Clink-arg=--strip-debug -Ctarget-feature=+bulk-memory,+multivalue,+mutable-globals,+nontrapping-fptoint,+reference-types,+sign-ext,+simd128"
+export RUSTFLAGS="-Zfmt-debug=none -Zunstable-options -Zlocation-detail=none -Cpanic=immediate-abort --cfg=swc_ast_unknown -Clink-arg=--gc-sections -Clink-arg=--strip-all -Clink-arg=--strip-debug -Ctarget-feature=+bulk-memory,+multivalue,+mutable-globals,+nontrapping-fptoint,+reference-types,+sign-ext,+simd128"
 
 cargo build \
     --release \
